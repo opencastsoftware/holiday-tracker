@@ -1,3 +1,7 @@
+@import play.api.data._
+@import play.api.data.Forms._
+@(helloForm: Form[(String, String)])
+@import helper._
 
 
 <!DOCTYPE html>
@@ -7,6 +11,19 @@
         <title>"hello"</title>
     </head>
     <body>
-        "Hello there!"
+        <p>"Hello there!"</p>
+    <p>Please enter your name to check how much holiday you have remaining:</p>
+
+    @form(action = routes.HolidayController.sayHello, args = 'id -> "helloform") {
+
+        <!--inputText(-->
+            <!--field = helloForm("id"),-->
+            <!--args = '_label -> "What is your name?", 'size -> 3-->
+        <!--)-->
+
+        <p class="buttons">
+            <input type="submit" id="submit" value="sayHello">
+        <p>
+    }
     </body>
 </html>
