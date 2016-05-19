@@ -1,7 +1,7 @@
 package controllers
 
 import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
-import play.api.mvc.{Action, AnyContent, Result}
+import play.api.mvc.Result
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
@@ -17,15 +17,6 @@ class HolidayControllerSpec extends PlaySpec with OneAppPerSuite {
 
         status(result) mustBe OK
         contentAsString(result) must include("Please enter your name")
-      }
-    }
-  }
-
-  "holidayRemaining" must {
-    "return the number of holidays remaining" when {
-      "given a valid name" in {
-        HolidayController.holidayRemaining("Bob") mustBe 3
-        HolidayController.holidayRemaining("Nicole") mustBe 10
       }
     }
   }
