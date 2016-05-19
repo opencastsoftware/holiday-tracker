@@ -19,13 +19,20 @@ class HolidayController extends Controller {
     Ok(main(testForm))
   }
 
+  val test = HolidayData
+
   def submit = Action { implicit request =>
     testForm.bindFromRequest().fold(
-      formWithErrors => Ok(hellothere(1)), // should be errors here
-      name => Ok(hellothere(1))
+      formWithErrors => Ok(hellothere(1)), // should be errors here.
+      name => Ok(hellothere(holidayRemaining(name)))
     )
   }
-  
+
+//  def sayHello = Action {
+//
+//    Ok(hellothere(hellothere(holidayRemaining(name))))
+//  }
+
   def holidayRemaining(name: String): Int = {
     val personInfo: List[(String, Int)] = HolidayData.remainingHolidays.filter(_._1 == name)
     personInfo(0)._2
