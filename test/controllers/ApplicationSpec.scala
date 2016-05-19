@@ -1,7 +1,7 @@
 package controllers
 
 import org.scalatest.Matchers
-import org.scalatestplus.play.PlaySpec
+import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
 import play.api.mvc.{Result, AnyContent, Action}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
@@ -9,7 +9,7 @@ import play.api.test.Helpers._
 import scala.concurrent.Future
 
 
-class HolidayControllerSpec extends PlaySpec {
+class HolidayControllerSpec extends PlaySpec with OneAppPerSuite {
 
   "The Application controller" must {
     "respond to a valid GET request with OK" in {

@@ -1,29 +1,27 @@
 @import play.api.data._
 @import play.api.data.Forms._
-@(helloForm: Form[(String, String)])
 @import helper._
+@import play.api.i18n.Messages.Implicits._
+@import play.api.Play.current
 
 
-<!DOCTYPE html>
+@(helloForm: Form[(String)])
+
 
 <html lang="en">
     <head>
         <title>"hello"</title>
     </head>
     <body>
-        <p>"Hello there!"</p>
-    <p>Please enter your name to check how much holiday you have remaining:</p>
 
-    @form(action = routes.HolidayController.sayHello, args = 'id -> "helloform") {
+    @helper.form(action = routes.HolidayController.sayHello) {
 
-        <!--inputText(-->
-            <!--field = helloForm("id"),-->
-            <!--args = '_label -> "What is your name?", 'size -> 3-->
-        <!--)-->
-
-        <p class="buttons">
-            <input type="submit" id="submit" value="sayHello">
-        <p>
+        <h1>Please enter your name to check how much holiday you have remaining:</h1>
+        @helper.inputText(helloForm("Name"))
+        <div class='form-actions'>
+            <button type='submit'>Check Holiday!</button>
+        </div>
     }
+
     </body>
 </html>

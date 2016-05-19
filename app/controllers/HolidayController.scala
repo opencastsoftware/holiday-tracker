@@ -9,28 +9,23 @@ import models.HolidayData
 
 class HolidayController extends Controller {
 
-  val form = Form(
-    tuple(
-      "firstname" -> text,
-      "lastname" -> text
+  val testForm = Form(
+    single(
+      "Name" -> text
     )
   )
 
   def index = Action {
-    Ok(main(form))
+    Ok(main(testForm))
   }
-
-  val test = HolidayData
 
   def submit = Action { implicit request =>
-    val (fname, lname) = form.bindFromRequest.get
-    Ok("Hi %s %s".format(fname, lname))
+    testForm.bindFromRequest().fold(
+      formWithErrors => Ok(hellothere(1)), // should be errors here
+      name => Ok(hellothere(1))
+    )
   }
-
-  def sayHello = Action {
-    Ok(hellothere())
-  }
-
+  
   def holidayRemaining(name: String): Int = {
     val personInfo: List[(String, Int)] = HolidayData.remainingHolidays.filter(_._1 == name)
     personInfo(0)._2
