@@ -28,11 +28,6 @@ class HolidayController extends Controller {
     )
   }
 
-//  def sayHello = Action {
-//
-//    Ok(hellothere(hellothere(holidayRemaining(name))))
-//  }
-
   def holidayRemaining(name: String): Int = {
     val personInfo: List[(String, Int)] = HolidayData.remainingHolidays.filter(_._1 == name)
     personInfo(0)._2
