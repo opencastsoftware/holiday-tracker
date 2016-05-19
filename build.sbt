@@ -2,7 +2,25 @@ name := "play-scala"
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+lazy val scoverageSettings = {
+  import scoverage._
+
+  val ScoverageExclusionPatterns = List(
+    "<empty>",
+    "app.*",
+    "views.*",
+    "router.*"
+  )
+
+  Seq(
+    ScoverageKeys.coverageExcludedPackages := ScoverageExclusionPatterns.mkString("",";",""),
+    ScoverageKeys.coverageMinimum := 98,
+    ScoverageKeys.coverageFailOnMinimum := true,
+    ScoverageKeys.coverageHighlighting := true
+  )
+}
+
+lazy val root = (project in file(".")).enablePlugins(PlayScala).settings(scoverageSettings : _*)
 
 scalaVersion := "2.11.6"
 
@@ -21,3 +39,4 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
+

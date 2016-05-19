@@ -7,3 +7,4 @@ target
 /.settings
 /RUNNING_PID
 playtest2.iml
+.DS_Store
