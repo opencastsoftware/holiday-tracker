@@ -40,5 +40,12 @@ class HolidayControllerSpec extends PlaySpec with OneAppPerSuite {
         contentAsString(result) must include("You have 10 days of holiday remaining!")
       }
     }
+    "respond with BAD_REQUEST" when {
+      "given no name" in {
+        val result: Future[Result] = HolidayController.submit.apply(FakeRequest().withFormUrlEncodedBody("Name" -> ""))
+
+        status(result) mustBe BAD_REQUEST
+      }
+    }
   }
 }
