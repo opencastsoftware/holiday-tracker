@@ -9,19 +9,33 @@
 
 
 <html lang="en">
-    <head>
-        <title>"hello"</title>
-    </head>
-    <body>
+<head>
+    <title>"hello"</title>
 
-    @helper.form(action = routes.HolidayController.submit) {
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous">
+    <link href=@routes.Assets.versioned("stylesheets/custom.css") rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
 
-        <h1>Please enter your name to check how much holiday you have remaining:</h1>
-        @helper.inputText(helloForm("Name"))
-        <div class='form-actions'>
-            <button type='submit'>Check Holiday!</button>
-        </div>
-    }
+<div class = 'container'>
 
-    </body>
+<h1>Please enter your name to check how much holiday you have remaining:</h1>
+
+@helper.form(action = routes.HolidayController.submit) {
+
+@helper.inputText(helloForm("Name"))
+<div class='form-actions'>
+    <button type='submit'>Check Holiday!</button>
+</div>
+}
+</div>
+
+</body>
 </html>
