@@ -3,15 +3,22 @@ package controllers
 
 import play.api.data.Forms._
 import play.api.data.Form
-import play.api.data.validation.{Valid, Constraint}
+import play.api.data.validation.{Invalid, ValidationError, Valid, Constraint}
 import play.api.mvc._
 import views.html.{main, hellothere}
 import models.HolidayData
 
 class HolidayController extends Controller {
 
+  val nameConstraint : Constraint[String] = Constraint {field:String =>
+    field match {
+      case "" => Invalid("Required")
+      case x: String if !HolidayData.checkName(x) => Invalid("Not an employee")
+      case _ => Valid
+    }
+  }
   val testForm = Form(
-    single("Name" -> nonEmptyText.verifying("You are not an employee!", x => HolidayData.checkName(x)))
+    single("Name" -> text.verifying(nameConstraint))
   )
 
   def index = Action {
