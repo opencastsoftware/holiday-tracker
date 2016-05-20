@@ -11,7 +11,7 @@ import models.HolidayData
 class HolidayController extends Controller {
 
   val testForm = Form(
-    single("Name" -> nonEmptyText.verifying(x => HolidayData.checkName(x)))
+    single("Name" -> nonEmptyText.verifying("You are not an employee!", x => HolidayData.checkName(x)))
   )
 
   def index = Action {

@@ -26,7 +26,9 @@ object HolidayData {
   lazy val allData = parseHolidayCsv
 
   def checkName(name: String): Boolean = {
-    val test: List[Boolean] = allData.map{x => x.name == name}
-    test contains true
+    if (name == "") true else {
+      val test: List[Boolean] = allData.map { x => x.name == name }
+      test contains true
+    }
   }
 }
