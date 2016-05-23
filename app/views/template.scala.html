@@ -1,16 +1,10 @@
-@import play.api.data._
-@import play.api.data.Forms._
-@import helper._
-@import play.api.i18n.Messages.Implicits._
-@import play.api.Play.current
 
 
-@(helloForm: Form[(String)])
-
+@(title: String)
 
 <html lang="en">
 <head>
-    <title>"hello"</title>
+    <title>@title</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           rel="stylesheet"
@@ -24,18 +18,7 @@
 </head>
 <body>
 
-    <div class = 'container'>
 
-        <h1>Please enter your name to check how much holiday you have remaining:</h1>
-
-        @helper.form(action = routes.HolidayController.submit) {
-
-            @helper.inputText(helloForm("Name"))
-            <div class='form-actions'>
-                <button type='submit'>Check Holiday!</button>
-            </div>
-        }
-    </div>
 
 </body>
 </html>
