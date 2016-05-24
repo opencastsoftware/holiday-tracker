@@ -38,13 +38,13 @@ class HolidayDataSpec extends PlaySpec with OneAppPerSuite {
       "given a name which is in the data" in {
         HolidayData.checkName("Nicole") mustBe true
       }
-      "given no name" in {
-        HolidayData.checkName("") mustBe true
-      }
     }
     "return false" when {
       "given a name which is not in the data" in {
         HolidayData.checkName("NoName") mustBe false
+      }
+      "given no name" in {
+        HolidayData.checkName("") mustBe false
       }
     }
   }
