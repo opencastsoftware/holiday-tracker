@@ -5,7 +5,7 @@ import play.api.data.Forms._
 import play.api.data.Form
 import play.api.data.validation.{Invalid, ValidationError, Valid, Constraint}
 import play.api.mvc._
-import views.html.{main, hellothere}
+import views.html.{main,hellothere}
 import models.HolidayData
 
 class HolidayController extends Controller {

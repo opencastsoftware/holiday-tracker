@@ -36,14 +36,14 @@ class HolidayControllerSpec extends PlaySpec with OneAppPerSuite {
         val result: Future[Result] = HolidayController.submit.apply(FakeRequest().withFormUrlEncodedBody("Name" -> ""))
 
         status(result) mustBe BAD_REQUEST
-        contentAsString(result) must include("This field is required")
+        contentAsString(result) must include("Required")
       }
       "given the name of someone who is not on the list" in {
         val result: Future[Result] = HolidayController.submit.apply(FakeRequest().withFormUrlEncodedBody("Name" -> ""))
 
         status(result) mustBe BAD_REQUEST
-        contentAsString(result) must include("This field is required")
-        contentAsString(result) must not include "You are not an employee!"
+        contentAsString(result) must include("Required")
+        contentAsString(result) must not include "Not an employee"
       }
     }
   }
