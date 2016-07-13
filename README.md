@@ -1,4 +1,4 @@
-Opencast Holiday Tracker App
-============================
+Holiday Tracker
+===============
 
-Play application to track employee holiday.
+[![Build Status](https://travis-ci.org/opencastsoftware/holiday-tracker.svg?branch=master)](https://travis-ci.org/opencastsoftware/holiday-tracker)
